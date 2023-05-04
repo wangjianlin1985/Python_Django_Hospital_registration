@@ -1,5 +1,5 @@
 # Python_Django_Hospital_registration
-Pythonj基于Django医院挂号诊疗系统毕业源码案例设计
+Python基于Django医院挂号诊疗系统毕业源码案例设计
 
 ## 技术环境: PyCharm + Django2.2 + Python3.7 + mysql
 
