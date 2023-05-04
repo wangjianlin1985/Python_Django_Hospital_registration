@@ -1,0 +1,59 @@
+{% load staticfiles %}
+{% include 'check_logstate.html' %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/department.css' %}" />
+<div id="department_EditDiv">
+	<form id="departmentModifyForm" enctype="multipart/form-data"  method="post">
+        {% csrf_token %}
+		<div>
+			<span class="label">科室编号:</span>
+			<span class="inputControl">
+				<input class="textbox" type="text" id="department_departmentNo_modify" name="department.departmentNo" value="{{ departmentNo }}" style="width:200px" />
+			</span>
+		</div>
+
+		<div>
+			<span class="label">科室名称:</span>
+			<span class="inputControl">
+				<input class="textbox" type="text" id="department_departmentName_modify" name="department.departmentName" style="width:200px" />
+
+			</span>
+
+		</div>
+		<div>
+			<span class="label">成立日期:</span>
+			<span class="inputControl">
+				<input class="textbox" type="text" id="department_madeDate_modify" name="department.madeDate" />
+
+			</span>
+
+		</div>
+		<div>
+			<span class="label">联系电话:</span>
+			<span class="inputControl">
+				<input class="textbox" type="text" id="department_telephone_modify" name="department.telephone" style="width:200px" />
+
+			</span>
+
+		</div>
+		<div>
+			<span class="label">负责人:</span>
+			<span class="inputControl">
+				<input class="textbox" type="text" id="department_chargeMan_modify" name="department.chargeMan" style="width:200px" />
+
+			</span>
+
+		</div>
+		<div>
+			<span class="label">科室介绍:</span>
+			<span class="inputControl">
+				<textarea id="department_departmentDesc_modify" name="department.departmentDesc" type="text/plain"   style="width:750px;height:500px;"></textarea>
+
+			</span>
+
+		</div>
+		<div class="operation">
+			<a id="departmentModifyButton" class="easyui-linkbutton">更新</a> 
+		</div>
+	</form>
+</div>
+<script src="{% static 'js/Department/department_modify.js' %}"></script>

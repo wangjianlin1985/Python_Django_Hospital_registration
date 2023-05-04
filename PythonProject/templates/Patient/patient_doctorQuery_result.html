@@ -1,0 +1,92 @@
+{% include 'check_doctor_logstate.html' %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/patient.css' %}" />
+
+{% csrf_token %}
+<div id="patient_manage"></div>
+<div id="patient_manage_tool" style="padding:5px;">
+	<div style="margin-bottom:5px;">
+		<a href="#" class="easyui-linkbutton" iconCls="icon-edit-new" plain="true" onclick="patient_manage_tool.edit();">修改</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-delete-new" plain="true" onclick="patient_manage_tool.remove();">删除</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-reload" plain="true"  onclick="patient_manage_tool.reload();">刷新</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onclick="patient_manage_tool.redo();">取消选择</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-export" plain="true" onclick="patient_manage_tool.exportExcel();">导出到excel</a>
+	</div>
+	<div style="padding:0 0 0 7px;color:#333;">
+		<form id="patientQueryForm" method="get">
+			联系电话：<input type="text" class="textbox" id="telephone" name="telephone" style="width:110px" />
+			<input class="textbox" type="hidden" id="doctorObj_doctorNumber_query" name="doctorObj.doctorNumber" style="width: 0px"/>
+			登记时间：<input type="text" id="addTime" name="addTime" class="easyui-datebox" editable="false" style="width:100px">
+			病人姓名：<input type="text" class="textbox" id="patientName" name="patientName" style="width:110px" />
+			身份证号：<input type="text" class="textbox" id="cardNumber" name="cardNumber" style="width:110px" />
+			<a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="patient_manage_tool.search();">查询</a>
+		</form>	
+	</div>
+</div>
+
+<div id="patientEditDiv">
+	<form id="patientEditForm" enctype="multipart/form-data"  method="post">
+        {% csrf_token %}
+		<div>
+			<span class="label">病人id:</span>
+			<span class="inputControl">
+				<input class="textbox" type="text" id="patient_patientId_edit" name="patient.patientId" style="width:200px" />
+			</span>
+		</div>
+		<div>
+			<span class="label">病人姓名:</span>
+			<span class="inputControl">
+				<input class="textbox" type="text" id="patient_patientName_edit" name="patient.patientName" style="width:200px" />
+
+			</span>
+
+		</div>
+		<div>
+			<span class="label">病人性别:</span>
+			<span class="inputControl">
+				<input class="textbox" type="text" id="patient_sex_edit" name="patient.sex" style="width:200px" />
+
+			</span>
+
+		</div>
+		<div>
+			<span class="label">身份证号:</span>
+			<span class="inputControl">
+				<input class="textbox" type="text" id="patient_cardNumber_edit" name="patient.cardNumber" style="width:200px" />
+
+			</span>
+
+		</div>
+		<div>
+			<span class="label">联系电话:</span>
+			<span class="inputControl">
+				<input class="textbox" type="text" id="patient_telephone_edit" name="patient.telephone" style="width:200px" />
+
+			</span>
+
+		</div>
+		<div>
+			<span class="label">病人病例:</span>
+			<span class="inputControl">
+				<textarea name="patient.illnessCase" id="patient_illnessCase_edit" type="text/plain"   style="width:100%;height:500px;"></textarea>
+
+			</span>
+
+		</div>
+		<div style="display:none;">
+			<span class="label">医生:</span>
+			<span class="inputControl">
+				<input class="textbox"  id="patient_doctorObj_doctorNumber_edit" name="patient.doctorObj.doctorNumber" style="width: auto"/>
+			</span>
+		</div>
+		<div>
+			<span class="label">登记时间:</span>
+			<span class="inputControl">
+				<input class="textbox" type="text" id="patient_addTime_edit" name="patient.addTime" />
+
+			</span>
+
+		</div>
+	</form>
+</div>
+<script type="text/javascript" src="{% static 'js/Patient/patient_doctor_manage.js' %}"></script>

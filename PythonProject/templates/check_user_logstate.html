@@ -1,0 +1,5 @@
+{% if not request.session.user_name %}
+<script>
+    alert('请先登录网站！');
+    top.location.href='{% url 'Index:index' %}';</script>
+{% endif %}
